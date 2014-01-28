@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 //Class implements Runnable for multi-threading
 public class FileSearch implements Runnable {
     //creates new date time class
+
     private getDateTime timeStamp = new getDateTime();
     //Variable declaration
     private String ROOT, Search;
@@ -35,13 +36,13 @@ public class FileSearch implements Runnable {
             //Checks that a value has been entered for the directory
             if (ROOT.isEmpty()) {
                 //if not then error message is shown
-                JOptionPane.showMessageDialog(null, "Please enter a directory before continuing.", 
+                JOptionPane.showMessageDialog(null, "Please enter a directory before continuing.",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 DFI_Interface.searchStarted = false;
                 //Checks that a value has been entered for the search term
             } else if (Search.isEmpty()) {
                 //if not then error message is shown
-                JOptionPane.showMessageDialog(null, "Please enter a search term before continuing.", 
+                JOptionPane.showMessageDialog(null, "Please enter a search term before continuing.",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 DFI_Interface.searchStarted = false;
             } else {
@@ -57,31 +58,34 @@ public class FileSearch implements Runnable {
                 try {
                     Files.walkFileTree(Paths.get(ROOT), fileProcessor);
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "An error occurred:\n" + e, 
+                    JOptionPane.showMessageDialog(null, "An error occurred:\n" + e,
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 //Once the end of the directory is reached, output a summary to log
                 searchComplete();
-
             }
-
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "An error occurred:\n" + e, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "An IOException occurred:\n" + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }
 
-    private void searchComplete() throws IOException {
+    private void searchComplete() {
         //write a search completion summary to the log and show message to the user.
-        WriteSearchLog.Write("");
-        WriteSearchLog.Write("---------------------------------------------------------------------------------------");
-        WriteSearchLog.Write(timeStamp.get() + " - SEARCH COMPLETED FOR PHRASE '" + Search + "' IN DIRECTORY '" + ROOT + "'");
-        WriteSearchLog.Write("DIRECTORIES SCANNED: " + DirectoryCount + " | FILES SCANNED: " + FileCount + " | RESULTS FOUND: " + ResultCount);
-        WriteSearchLog.Write("---------------------------------------------------------------------------------------");
-        WriteSearchLog.Write("");
-        JOptionPane.showMessageDialog(null, "Search Complete! \n\n"
-                + "DIRECTORIES SCANNED: " + DirectoryCount + "\nFILES SCANNED: " + FileCount + "\nRESULTS FOUND: " + ResultCount, "Search Complete", JOptionPane.DEFAULT_OPTION);
-        DFI_Interface.searchStarted = false;
+        try {
+            WriteSearchLog.Write("");
+            WriteSearchLog.Write("---------------------------------------------------------------------------------------");
+            WriteSearchLog.Write(timeStamp.get() + " - SEARCH COMPLETED FOR PHRASE '" + Search + "' IN DIRECTORY '" + ROOT + "'");
+            WriteSearchLog.Write("DIRECTORIES SCANNED: " + DirectoryCount + " | FILES SCANNED: " + FileCount + " | RESULTS FOUND: " + ResultCount);
+            WriteSearchLog.Write("---------------------------------------------------------------------------------------");
+            WriteSearchLog.Write("");
+            JOptionPane.showMessageDialog(null, "Search Complete! \n\n"
+                    + "DIRECTORIES SCANNED: " + DirectoryCount + "\nFILES SCANNED: " + FileCount + "\nRESULTS FOUND: " + ResultCount, "Search Complete", JOptionPane.DEFAULT_OPTION);
+            DFI_Interface.searchStarted = false;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "An IOException occurred:\n"
+                    + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     //Class to process any txt files that are found during the search

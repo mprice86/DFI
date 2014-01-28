@@ -13,10 +13,8 @@ import javax.swing.JOptionPane;
 
 public class WritePingLog {
     //class to write to the ping log file
-    
     //create new file with the name pinglog.txt
     public static File aFile = new File("PingLog.txt");
-
     //method to write to the log
     public static void Write(String Log) throws IOException {
         //Check if PingLog already exists
@@ -25,7 +23,6 @@ public class WritePingLog {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "An error occurred \n" + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-
         //Write log to file
         setContents(aFile, Log);
     }
@@ -33,7 +30,6 @@ public class WritePingLog {
     public static void checkFileExists(String fileName) throws IOException {
         //New file class with name PingLog
         File file = new File(aFile.toString());
-
         //if file doesn't exist then new file with name searchlog is created
         if (!aFile.exists()) {
             file.createNewFile();
@@ -43,7 +39,6 @@ public class WritePingLog {
     public static String getContents(File aFile) {
         //Get contents of the log file using string builder
         StringBuilder contents = new StringBuilder();
-
         //while the line in the file is not null, append it to the string
         try (BufferedReader input = new BufferedReader(new FileReader(aFile))) {
             String line;

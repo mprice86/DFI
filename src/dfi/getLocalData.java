@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 
 public class getLocalData {
     //Variables to store necessary values
-
     String MAC = "";
     String hostName = "";
     String ip = "";

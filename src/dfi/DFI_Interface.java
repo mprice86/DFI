@@ -13,7 +13,6 @@ import java.util.StringTokenizer;
 import javax.swing.JFileChooser;
 
 public class DFI_Interface extends javax.swing.JFrame implements Runnable {
-
     //Create threads to be started later
     private Thread Search;
     private Thread Sweep;
@@ -59,6 +58,13 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
         jTar_Output = new javax.swing.JTextArea();
         jBtn_Search_Reset = new javax.swing.JButton();
         jBtn_Search_Log = new javax.swing.JButton();
+        jPne_FileDetails = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jTxt_FilePicker = new javax.swing.JTextField();
+        jBtn_PickFile = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTar_FileDetail_Output = new javax.swing.JTextArea();
+        jBtn_FileDetail_Reset = new javax.swing.JButton();
         jPne_MD5 = new javax.swing.JPanel();
         jBtn_FilePickOne = new javax.swing.JButton();
         jTxt_FileOne = new javax.swing.JTextField();
@@ -69,13 +75,10 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
         jBtn_Reset = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTar_MD5_Output = new javax.swing.JTextArea();
-        jPne_FileDetails = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jTxt_FilePicker = new javax.swing.JTextField();
-        jBtn_PickFile = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTar_FileDetail_Output = new javax.swing.JTextArea();
-        jBtn_FileDetail_Reset = new javax.swing.JButton();
+        jPne_LocalMachine = new javax.swing.JPanel();
+        jBtn_LM_Search = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTar_LM_Output = new javax.swing.JTextArea();
         jPne_PingSweep = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -87,10 +90,6 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTar_IP_Output = new javax.swing.JTextArea();
         jBtn_IP_Log = new javax.swing.JButton();
-        jPne_LocalMachine = new javax.swing.JPanel();
-        jBtn_LM_Search = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTar_LM_Output = new javax.swing.JTextArea();
         jPne_PortScan = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -219,6 +218,72 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
 
             jTPne_Features.addTab("File Search", jPne_FileSearch);
 
+            jPne_FileDetails.setName("File Details"); // NOI18N
+
+            jLabel6.setText("Choose file:");
+
+            jTxt_FilePicker.setEditable(false);
+            jTxt_FilePicker.setToolTipText("Choose the file you want to examine by clicking the \"Choose File\" button to the right");
+
+            jBtn_PickFile.setText("Choose File");
+            jBtn_PickFile.setToolTipText("Open file browser to choose the file which you want to examine");
+            jBtn_PickFile.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jBtn_PickFileActionPerformed(evt);
+                }
+            });
+
+            jTar_FileDetail_Output.setEditable(false);
+            jTar_FileDetail_Output.setColumns(20);
+            jTar_FileDetail_Output.setRows(5);
+            jTar_FileDetail_Output.setToolTipText("The file log will appear here once the file's details have been gathered");
+            jScrollPane3.setViewportView(jTar_FileDetail_Output);
+
+            jBtn_FileDetail_Reset.setText("Reset");
+            jBtn_FileDetail_Reset.setToolTipText("Reset the form");
+            jBtn_FileDetail_Reset.setPreferredSize(new java.awt.Dimension(87, 23));
+            jBtn_FileDetail_Reset.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jBtn_FileDetail_ResetActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout jPne_FileDetailsLayout = new javax.swing.GroupLayout(jPne_FileDetails);
+            jPne_FileDetails.setLayout(jPne_FileDetailsLayout);
+            jPne_FileDetailsLayout.setHorizontalGroup(
+                jPne_FileDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPne_FileDetailsLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPne_FileDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane3)
+                        .addGroup(jPne_FileDetailsLayout.createSequentialGroup()
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTxt_FilePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jBtn_PickFile))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPne_FileDetailsLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jBtn_FileDetail_Reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap())
+            );
+            jPne_FileDetailsLayout.setVerticalGroup(
+                jPne_FileDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPne_FileDetailsLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPne_FileDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(jTxt_FilePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtn_PickFile))
+                    .addGap(45, 45, 45)
+                    .addComponent(jBtn_FileDetail_Reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(11, 11, 11)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(58, Short.MAX_VALUE))
+            );
+
+            jTPne_Features.addTab("File Details", jPne_FileDetails);
+
             jPne_MD5.setName("MD5 Comparison"); // NOI18N
 
             jBtn_FilePickOne.setText("Choose File");
@@ -307,71 +372,46 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
 
             jTPne_Features.addTab("MD5 Comparison", jPne_MD5);
 
-            jPne_FileDetails.setName("File Details"); // NOI18N
+            jPne_LocalMachine.setName("Local Machine Details"); // NOI18N
 
-            jLabel6.setText("Choose file:");
-
-            jTxt_FilePicker.setEditable(false);
-            jTxt_FilePicker.setToolTipText("Choose the file you want to examine by clicking the \"Choose File\" button to the right");
-
-            jBtn_PickFile.setText("Choose File");
-            jBtn_PickFile.setToolTipText("Open file browser to choose the file which you want to examine");
-            jBtn_PickFile.addActionListener(new java.awt.event.ActionListener() {
+            jBtn_LM_Search.setText("Get Local Machine Details");
+            jBtn_LM_Search.setToolTipText("Gets the hostname, IP Address, default gateway and MAC Address of the local machine");
+            jBtn_LM_Search.setMaximumSize(new java.awt.Dimension(87, 23));
+            jBtn_LM_Search.setMinimumSize(new java.awt.Dimension(87, 23));
+            jBtn_LM_Search.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jBtn_PickFileActionPerformed(evt);
+                    jBtn_LM_SearchActionPerformed(evt);
                 }
             });
 
-            jTar_FileDetail_Output.setEditable(false);
-            jTar_FileDetail_Output.setColumns(20);
-            jTar_FileDetail_Output.setRows(5);
-            jTar_FileDetail_Output.setToolTipText("The file log will appear here once the file's details have been gathered");
-            jScrollPane3.setViewportView(jTar_FileDetail_Output);
+            jTar_LM_Output.setEditable(false);
+            jTar_LM_Output.setColumns(20);
+            jTar_LM_Output.setRows(5);
+            jTar_LM_Output.setToolTipText("The details of the local machine will appear here");
+            jScrollPane5.setViewportView(jTar_LM_Output);
 
-            jBtn_FileDetail_Reset.setText("Reset");
-            jBtn_FileDetail_Reset.setToolTipText("Reset the form");
-            jBtn_FileDetail_Reset.setPreferredSize(new java.awt.Dimension(87, 23));
-            jBtn_FileDetail_Reset.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jBtn_FileDetail_ResetActionPerformed(evt);
-                }
-            });
-
-            javax.swing.GroupLayout jPne_FileDetailsLayout = new javax.swing.GroupLayout(jPne_FileDetails);
-            jPne_FileDetails.setLayout(jPne_FileDetailsLayout);
-            jPne_FileDetailsLayout.setHorizontalGroup(
-                jPne_FileDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPne_FileDetailsLayout.createSequentialGroup()
+            javax.swing.GroupLayout jPne_LocalMachineLayout = new javax.swing.GroupLayout(jPne_LocalMachine);
+            jPne_LocalMachine.setLayout(jPne_LocalMachineLayout);
+            jPne_LocalMachineLayout.setHorizontalGroup(
+                jPne_LocalMachineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPne_LocalMachineLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPne_FileDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane3)
-                        .addGroup(jPne_FileDetailsLayout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTxt_FilePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jBtn_PickFile))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPne_FileDetailsLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(jBtn_FileDetail_Reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPne_LocalMachineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jBtn_LM_Search, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE))
                     .addContainerGap())
             );
-            jPne_FileDetailsLayout.setVerticalGroup(
-                jPne_FileDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPne_FileDetailsLayout.createSequentialGroup()
+            jPne_LocalMachineLayout.setVerticalGroup(
+                jPne_LocalMachineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPne_LocalMachineLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPne_FileDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jTxt_FilePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBtn_PickFile))
-                    .addGap(45, 45, 45)
-                    .addComponent(jBtn_FileDetail_Reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(11, 11, 11)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(jBtn_LM_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(79, 79, 79)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(45, Short.MAX_VALUE))
             );
 
-            jTPne_Features.addTab("File Details", jPne_FileDetails);
+            jTPne_Features.addTab("Local Machine Details", jPne_LocalMachine);
 
             jPne_PingSweep.setName("Ping Sweep"); // NOI18N
 
@@ -483,47 +523,6 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
             );
 
             jTPne_Features.addTab("Ping Sweep", jPne_PingSweep);
-
-            jPne_LocalMachine.setName("Local Machine Details"); // NOI18N
-
-            jBtn_LM_Search.setText("Get Local Machine Details");
-            jBtn_LM_Search.setToolTipText("Gets the hostname, IP Address, default gateway and MAC Address of the local machine");
-            jBtn_LM_Search.setMaximumSize(new java.awt.Dimension(87, 23));
-            jBtn_LM_Search.setMinimumSize(new java.awt.Dimension(87, 23));
-            jBtn_LM_Search.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jBtn_LM_SearchActionPerformed(evt);
-                }
-            });
-
-            jTar_LM_Output.setEditable(false);
-            jTar_LM_Output.setColumns(20);
-            jTar_LM_Output.setRows(5);
-            jTar_LM_Output.setToolTipText("The details of the local machine will appear here");
-            jScrollPane5.setViewportView(jTar_LM_Output);
-
-            javax.swing.GroupLayout jPne_LocalMachineLayout = new javax.swing.GroupLayout(jPne_LocalMachine);
-            jPne_LocalMachine.setLayout(jPne_LocalMachineLayout);
-            jPne_LocalMachineLayout.setHorizontalGroup(
-                jPne_LocalMachineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPne_LocalMachineLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPne_LocalMachineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jBtn_LM_Search, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE))
-                    .addContainerGap())
-            );
-            jPne_LocalMachineLayout.setVerticalGroup(
-                jPne_LocalMachineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPne_LocalMachineLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jBtn_LM_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(79, 79, 79)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(45, Short.MAX_VALUE))
-            );
-
-            jTPne_Features.addTab("Local Machine Details", jPne_LocalMachine);
 
             jPne_PortScan.setName("Port Scan"); // NOI18N
 
@@ -695,42 +694,33 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
             Search.start();
             searchStarted = true;
         } else {
-            JOptionPane.showMessageDialog(null, "Search is already running."
-                    , "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Search is already running.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBtn_SearchActionPerformed
 
     private void jBtn_CancelSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_CancelSearchActionPerformed
         //if search running, run method to stop it
         if (Search.isAlive()) {
+            //Aware that .stop is Deprecated however in the given time frame it was not
+            //possible to find a suitablely effective replacement and .interrupt() could
+            //not be implemented successfully as the thread does not rely on a loop.
             try {
-                cancelButton();
-            } catch (IOException | InterruptedException e) {
-                JOptionPane.showMessageDialog(null, "An exception occurred. \n" 
+                Search.stop();
+                //Write message to the log then show the log in the output field
+                WriteSearchLog.Write("");
+                WriteSearchLog.Write("---------------------------------------------------------------------------------------");
+                WriteSearchLog.Write(timeStamp.get() + " - SEARCH FOR PHRASE '" + jTxt_SearchTerm.getText() + "' IN DIRECTORY '" + jTxt_Directory.getText() + "' WAS CANCELLED BY THE USER");
+                WriteSearchLog.Write("---------------------------------------------------------------------------------------");
+                WriteSearchLog.Write("");
+
+                jTar_Output.setText(WriteSearchLog.getContents(aFile));
+                searchStarted = false;
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "An IOException occurred. \n"
                         + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jBtn_CancelSearchActionPerformed
-
-    public void cancelButton() throws IOException, InterruptedException {
-        //Aware that .stop is Deprecated however in the given time frame it was not
-        //possible to find a suitablely effective replacement and .interrupt() could
-        //not be implemented successfully as the thread does not rely on a loop.
-        Search.stop();
-
-        //Search.interrupt();
-        //Search.join();
-
-        //Write message to the log then show the log in the output field
-        WriteSearchLog.Write("");
-        WriteSearchLog.Write("---------------------------------------------------------------------------------------");
-        WriteSearchLog.Write(timeStamp.get() + " - SEARCH FOR PHRASE '" + jTxt_SearchTerm.getText() + "' IN DIRECTORY '" + jTxt_Directory.getText() + "' WAS CANCELLED BY THE USER");
-        WriteSearchLog.Write("---------------------------------------------------------------------------------------");
-        WriteSearchLog.Write("");
-
-        jTar_Output.setText(WriteSearchLog.getContents(aFile));
-        searchStarted = false;
-    }
 
     private void jTPne_FeaturesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTPne_FeaturesStateChanged
         //Sets the title to the name of the currently selected feature
@@ -771,7 +761,7 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
                     }
                     //catch exceptions
                 } catch (IOException | NoSuchAlgorithmException e) {
-                    JOptionPane.showMessageDialog(null, "An error occurred: \n" 
+                    JOptionPane.showMessageDialog(null, "An error occurred: \n"
                             + e, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -804,7 +794,7 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
                     }
                     //catch exceptions
                 } catch (IOException | NoSuchAlgorithmException e) {
-                    JOptionPane.showMessageDialog(null, "An error occurred: \n" 
+                    JOptionPane.showMessageDialog(null, "An error occurred: \n"
                             + e, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -854,7 +844,7 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
                     }
                     //catch exceptions
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "An error occurred. \n" 
+                    JOptionPane.showMessageDialog(null, "An error occurred. \n"
                             + e, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -874,8 +864,6 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
                 //and that they are valid addresses
             } else if (!validateIP(jTxt_IPOne.getText()) || !validateIP(jTxt_IPTwo.getText())) {
                 JOptionPane.showMessageDialog(null, "You need to format IP Addresses correctly.");
-//            } else if (Integer.parseInt(jTxt_IPOne.getText()) > Integer.parseInt(jTxt_IPTwo.getText())) {
-//                JOptionPane.showMessageDialog(null, "The first IP address cannot be of greater value than the second.");
             } else {
                 //otherwise, show message and start the sweep
                 jTar_IP_Output.setText("Ping Sweep started. A message will be displayed when it completes, then click \"Show Log\" to view the results");
@@ -888,13 +876,13 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
             }
         } else {
             //if sweep is already running show message
-            JOptionPane.showMessageDialog(null, "Ping Sweep is already running.", 
+            JOptionPane.showMessageDialog(null, "Ping Sweep is already running.",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBtn_IP_SearchActionPerformed
 
-    //Check that the IP Address has been correctly formatted
     public boolean validateIP(String ip) {
+        //Check that the IP Address has been correctly formatted
         StringTokenizer st = new StringTokenizer(ip, ".");
         int count = 0;
         //While there are more tokens in the string
@@ -919,30 +907,25 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
     private void jBtn_IP_CancelSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_IP_CancelSearchActionPerformed
         //if sweep is running, run method to stop it
         if (Sweep.isAlive() || sweepStarted) {
-            cancelIPButton();
+            try {
+                //Aware that .stop is Deprecated however in the given time frame it was not
+                //possible to find a suitablely effective replacement and .interrupt() could
+                //not be implemented successfully.
+                Sweep.stop();
+                //Write message to the log then show the log in the output field
+                WritePingLog.Write("");
+                WritePingLog.Write("---------------------------------------------------------------------------------------");
+                WritePingLog.Write(timeStamp.get() + " - PING SWEEP BETWEEN '" + ip1 + "' AND '" + ip2 + "' WAS CANCELLED BY THE USER");
+                WritePingLog.Write("---------------------------------------------------------------------------------------");
+                WritePingLog.Write("");
+                jTar_IP_Output.setText(WritePingLog.getContents(bFile));
+                sweepStarted = false;
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "An error occurred. \n"
+                        + e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jBtn_IP_CancelSearchActionPerformed
-
-    private void cancelIPButton() {
-        try {
-            //Aware that .stop is Deprecated however in the given time frame it was not
-            //possible to find a suitablely effective replacement and .interrupt() could
-            //not be implemented successfully.
-            Sweep.stop();
-            //Write message to the log then show the log in the output field
-            WritePingLog.Write("");
-            WritePingLog.Write("---------------------------------------------------------------------------------------");
-            WritePingLog.Write(timeStamp.get() + " - PING SWEEP BETWEEN '" + ip1 + "' AND '" + ip2 + "' WAS CANCELLED BY THE USER");
-            WritePingLog.Write("---------------------------------------------------------------------------------------");
-            WritePingLog.Write("");
-            jTar_IP_Output.setText(WritePingLog.getContents(bFile));
-            sweepStarted = false;
-
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "An error occurred. \n" 
-                    + e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
     private void jBtn_IP_ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_IP_ResetActionPerformed
         //Clear all fields and variables related to the IP Sweep
@@ -951,7 +934,6 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
         jTar_IP_Output.setText("");
         ip1 = "";
         ip2 = "";
-
     }//GEN-LAST:event_jBtn_IP_ResetActionPerformed
 
     private void jBtn_Search_LogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_Search_LogActionPerformed
@@ -987,7 +969,6 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
         jTxt_Port_One.setText("");
         jTxt_Port_Two.setText("");
         jTxt_Port_Host.setText("");
-
         hostAddress = "";
         port1 = 0;
         port2 = 0;
@@ -1001,8 +982,9 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jBtn_Port_CancelActionPerformed
 
     private void jBtn_Port_ScanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_Port_ScanActionPerformed
-
-        jTar_Port_Output.setText("Search started. A message will display when it is complete, then press the \"Show Log\" button to view the result");//if sweep is running then show error, otherwise run method if port scan is not already running
+        //if sweep is running then show error, otherwise run method if port scan is not already running
+        jTar_Port_Output.setText("Search started. A message will display when it is complete, "
+                + "then press the \"Show Log\" button to view the result");
         try {
             if (sweepStarted) {
                 JOptionPane.showMessageDialog(null, "Cannot run port scan while Ping Sweep is running.");
@@ -1024,7 +1006,6 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
                     hostAddress = jTxt_Port_Host.getText();
                     port1 = Integer.parseInt(jTxt_Port_One.getText());
                     port2 = Integer.parseInt(jTxt_Port_Two.getText());
-
                     // Starts search in new thread so user can continue to operate program while system is scanned.
                     PortScan scan = new PortScan();
                     PortScan = new Thread(scan);
@@ -1060,7 +1041,7 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
             jTar_Port_Output.setText(WritePingLog.getContents(bFile));
             portscanStarted = false;
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "An error occurred. \n" 
+            JOptionPane.showMessageDialog(null, "An error occurred. \n"
                     + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -1119,6 +1100,7 @@ public class DFI_Interface extends javax.swing.JFrame implements Runnable {
         //show the interface
         new DFI_Interface().setVisible(true);
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtn_CancelSearch;
     private javax.swing.JButton jBtn_FileDetail_Reset;

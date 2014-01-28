@@ -12,10 +12,8 @@ import javax.swing.JOptionPane;
 
 public class WriteSearchLog {
     //class to write the search log to file
-
     //create new file with the name SearchLog
     public static File aFile = new File("SearchLog.txt");
-
     //Method to write to the log
     public static void Write(String Log) throws IOException {
         //Check if SearchLog already exists
@@ -24,7 +22,6 @@ public class WriteSearchLog {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "An error occurred \n" + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-
         //Write log to file
         setContents(aFile, Log);
     }
@@ -32,7 +29,6 @@ public class WriteSearchLog {
     public static void checkFileExists(String fileName) throws IOException {
         //New file class with name searchlog
         File file = new File(aFile.toString());
-
         //if file doesn't exist then new file with name searchlog is created
         if (!aFile.exists()) {
             file.createNewFile();
@@ -42,7 +38,6 @@ public class WriteSearchLog {
     public static String getContents(File aFile) {
         //Get contents of the log file using string builder
         StringBuilder contents = new StringBuilder();
-
         //while the line in the file is not null, append it to the string
         try (BufferedReader input = new BufferedReader(new FileReader(aFile))) {
             String line;

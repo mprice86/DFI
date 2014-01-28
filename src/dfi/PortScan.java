@@ -21,7 +21,6 @@ public class PortScan implements Runnable {
     @Override
     public void run() {
         //initialise variables
-
         InetAddress inet = null;
 
         try {
@@ -62,25 +61,6 @@ public class PortScan implements Runnable {
         
     }
 
-    private void scanComplete(String host, int port1, int port2) {
-        //write completion message to log and show message to user
-        try {
-            WritePingLog.Write("");
-            WritePingLog.Write("---------------------------------------------------------------------------------------");
-            WritePingLog.Write(timeStamp.get() + " - PORT SCAN ON HOST '" + host + "' BETWEEN PORT " + port1 + " AND PORT " + port2 + " COMPLETED");
-            WritePingLog.Write(timeStamp.get() + " - " + (portCount) + " PORTS WERE SCANNED, " + hostCount + " HOSTS WERE FOUND.");
-            WritePingLog.Write("---------------------------------------------------------------------------------------");
-            WritePingLog.Write("");
-            JOptionPane.showMessageDialog(null, "Scan Complete! \n\n"
-                    + "PORTS SCANNED: " + (portCount) + "\nHOSTS FOUND: " + hostCount, 
-                    timeStamp.get() + " - Sweep Complete", JOptionPane.DEFAULT_OPTION);
-            DFI_Interface.portscanStarted = false;
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "An IOException occurred. \n" + e, 
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
     public void scan(final InetAddress remote, int port1, int port2) throws IOException {
         //initialise variables
         int port = 0;
@@ -101,5 +81,24 @@ public class PortScan implements Runnable {
         }
         //run method to write and display completion message
         scanComplete(host, port1, port2);
+    }
+    
+    private void scanComplete(String host, int port1, int port2) {
+        //write completion message to log and show message to user
+        try {
+            WritePingLog.Write("");
+            WritePingLog.Write("---------------------------------------------------------------------------------------");
+            WritePingLog.Write(timeStamp.get() + " - PORT SCAN ON HOST '" + host + "' BETWEEN PORT " + port1 + " AND PORT " + port2 + " COMPLETED");
+            WritePingLog.Write(timeStamp.get() + " - " + (portCount) + " PORTS WERE SCANNED, " + hostCount + " HOSTS WERE FOUND.");
+            WritePingLog.Write("---------------------------------------------------------------------------------------");
+            WritePingLog.Write("");
+            JOptionPane.showMessageDialog(null, "Scan Complete! \n\n"
+                    + "PORTS SCANNED: " + (portCount) + "\nHOSTS FOUND: " + hostCount, 
+                    timeStamp.get() + " - Sweep Complete", JOptionPane.DEFAULT_OPTION);
+            DFI_Interface.portscanStarted = false;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "An IOException occurred. \n" + e, 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
